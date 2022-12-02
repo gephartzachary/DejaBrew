@@ -1,114 +1,94 @@
---
--- File generated with SQLiteStudio v3.3.3 on Fri Dec 2 16:30:53 2022
---
--- Text encoding used: System
---
-PRAGMA foreign_keys = off;
-BEGIN TRANSACTION;
 
--- Table: Bar
 CREATE TABLE Bar (
-    BarID     INTEGER PRIMARY KEY AUTOINCREMENT
-                      NOT NULL,
-    Details   STRING,
+    BarID     INT NOT NULL AUTO_INCREMENT,
+    Details   NVARCHAR,
     DateAdded DATE,
-    Name      STRING,
+    Name      NVARCHAR,
     Rating    DECIMAL,
-    Picture   STRING,
-    Location  STRING
+    Picture   NVARCHAR,
+    Location  NVARCHAR,
+    PRIMARY KEY (BarID)
 );
 
-
--- Table: Beer
 CREATE TABLE Beer (
-    BeerID    INTEGER PRIMARY KEY AUTOINCREMENT
-                      NOT NULL,
+    BeerID    INT NOT NULL AUTO_INCREMENT ,
     DateAdded DATE,
-    Type      STRING,
+    Type      NVARCHAR,
     Cost      DOUBLE,
-    Comments  STRING,
-    Picture   STRING,
+    Comments  NVARCHAR,
+    Picture   NVARCHAR,
     AlcVol    DOUBLE,
-    Name      STRING
+    Name      NVARCHAR,
+    PRIMARY KEY (BeerID)
 );
 
-
--- Table: Brewery
 CREATE TABLE Brewery (
-    BreweryID INTEGER PRIMARY KEY AUTOINCREMENT
-                      NOT NULL,
-    Name      STRING,
-    Type      STRING,
-    Picture   STRING,
-    Location  STRING,
+    BreweryID INT NOT NULL AUTO_INCREMENT,
+    Name      NVARCHAR,
+    Type      NVARCHAR,
+    Picture   NVARCHAR,
+    Location  NVARCHAR,
     DateAdded DATE,
-    Details   STRING
+    Details   NVARCHAR,
+    PRIMARY KEY ( BreweryID )
 );
 
-
--- Table: Brews
 CREATE TABLE Brews (
-    BrewID    INTEGER PRIMARY KEY AUTOINCREMENT
-                      NOT NULL,
-    BreweryID INTEGER REFERENCES Brewery (BreweryID),
-    BeerID    INTEGER REFERENCES Beer (BeerID) 
+    BrewID    INT NOT NULL AUTO_INCREMENT,
+    BreweryID INT,
+    FOREIGN KEY (BreweryID) REFERENCES Brewery (BreweryID),
+    BeerID    INT ,
+    FOREIGN KEY (BeerID) REFERENCES Beer (BeerID),
+    PRIMARY KEY ( BrewID )
 );
 
-
--- Table: Buys
 CREATE TABLE Buys (
-    BuyID  INTEGER PRIMARY KEY
-                   DEFAULT ( -1),
-    BeerID INTEGER REFERENCES Beer (BeerID),
-    BarID  INTEGER REFERENCES Bar (BarID) 
+    BuyID  INT NOT NULL AUTO_INCREMENT,
+    BeerID INT ,
+    FOREIGN KEY (BeerID) REFERENCES Beer (BeerID),
+    BarID  INT ,
+    FOREIGN KEY (BarID) REFERENCES Bar (BarID),
+    PRIMARY KEY ( BuyID )
 );
 
-
--- Table: Claim
 CREATE TABLE Claim (
-    ClaimID INTEGER PRIMARY KEY AUTOINCREMENT
-                    NOT NULL,
-    BarID   INTEGER REFERENCES Bar (BarID),
-    TabID   INTEGER REFERENCES Tab (TabID) 
+    ClaimID INT NOT NULL AUTO_INCREMENT,
+    BarID   INT ,
+    FOREIGN KEY (BarID) REFERENCES Bar (BarID),
+    TabID   INT ,
+    FOREIGN KEY (TabID) REFERENCES Tab (TabID),
+    PRIMARY KEY ( ClaimID )
 );
 
-
--- Table: Pay
 CREATE TABLE Pay (
-    PayID INTEGER PRIMARY KEY AUTOINCREMENT
-                  NOT NULL,
-    TabID INTEGER REFERENCES Tab (TabID),
-    PID   INTEGER REFERENCES Person (PID) 
+    PayID INT NOT NULL AUTO_INCREMENT,
+    TabID INT,
+    FOREIGN KEY (TabID) REFERENCES Tab (TabID),
+    PID   INT ,
+    FOREIGN KEY (PID) REFERENCES Person (PID),
+    PRIMARY KEY ( PayID )
 );
 
-
--- Table: Person
 CREATE TABLE Person (
-    PID     INTEGER PRIMARY KEY AUTOINCREMENT
-                    NOT NULL,
-    Name    STRING,
-    Picture STRING
+    PID     INT NOT NULL AUTO_INCREMENT,
+    Name    NVARCHAR,
+    Picture NVARCHAR,
+    PRIMARY KEY ( PID )
 );
 
-
--- Table: Tab
 CREATE TABLE Tab (
-    TabID INTEGER PRIMARY KEY AUTOINCREMENT
-                  NOT NULL,
-    Total INTEGER
+    TabID INT NOT NULL AUTO_INCREMENT,
+    Total INT,
+    PRIMARY KEY ( TabID )
 );
 
-
--- Table: TabList
 CREATE TABLE TabList (
-    ListID   INTEGER PRIMARY KEY AUTOINCREMENT
-                     NOT NULL,
-    BeerID   INTEGER REFERENCES Beer (BeerID),
-    TabID    INTEGER REFERENCES Tab (TabID),
-    Quantity INTEGER,
-    Rating   DOUBLE
+    ListID   INT NOT NULL AUTO_INCREMENT,
+    BeerID   INT ,
+    FOREIGN KEY (BeerID) REFERENCES Beer (BeerID),
+    TabID    INT ,
+    FOREIGN KEY (TabID) REFERENCES Tab (TabID),
+    Quantity INT,
+    Rating   DOUBLE,
+    PRIMARY KEY ( ListID )
 );
-
-
-COMMIT TRANSACTION;
-PRAGMA foreign_keys = on;
