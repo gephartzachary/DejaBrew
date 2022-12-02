@@ -111,4 +111,3 @@ CREATE TABLE TabList (
 
 
 COMMIT TRANSACTION;
-PRAGMA foreign_keys = on;
