@@ -33,6 +33,19 @@ CREATE TABLE Brewery (
     PRIMARY KEY ( BreweryID )
 );
 
+CREATE TABLE Person (
+    PID     INT NOT NULL AUTO_INCREMENT,
+    Name    NVARCHAR(60),
+    Picture NVARCHAR(60),
+    PRIMARY KEY ( PID )
+);
+
+CREATE TABLE Tab (
+    TabID INT NOT NULL AUTO_INCREMENT,
+    Total INT,
+    PRIMARY KEY ( TabID )
+);
+
 CREATE TABLE Brews (
     BrewID    INT NOT NULL AUTO_INCREMENT,
     BreweryID INT,
@@ -67,19 +80,6 @@ CREATE TABLE Pay (
     PID   INT ,
     FOREIGN KEY (PID) REFERENCES Person (PID),
     PRIMARY KEY ( PayID )
-);
-
-CREATE TABLE Person (
-    PID     INT NOT NULL AUTO_INCREMENT,
-    Name    NVARCHAR(60),
-    Picture NVARCHAR(60),
-    PRIMARY KEY ( PID )
-);
-
-CREATE TABLE Tab (
-    TabID INT NOT NULL AUTO_INCREMENT,
-    Total INT,
-    PRIMARY KEY ( TabID )
 );
 
 CREATE TABLE TabList (
