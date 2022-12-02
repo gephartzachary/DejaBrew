@@ -1,35 +1,35 @@
 
 CREATE TABLE Bar (
     BarID     INT NOT NULL AUTO_INCREMENT,
-    Details   NVARCHAR,
+    Details   NVARCHAR(60),
     DateAdded DATE,
-    Name      NVARCHAR,
+    Name      NVARCHAR(60),
     Rating    DECIMAL,
-    Picture   NVARCHAR,
-    Location  NVARCHAR,
+    Picture   NVARCHAR(60),
+    Location  NVARCHAR(60),
     PRIMARY KEY (BarID)
 );
 
 CREATE TABLE Beer (
     BeerID    INT NOT NULL AUTO_INCREMENT ,
     DateAdded DATE,
-    Type      NVARCHAR,
+    Type      NVARCHAR(40),
     Cost      DOUBLE,
-    Comments  NVARCHAR,
-    Picture   NVARCHAR,
+    Comments  NVARCHAR(60),
+    Picture   NVARCHAR(60),
     AlcVol    DOUBLE,
-    Name      NVARCHAR,
+    Name      NVARCHAR(60),
     PRIMARY KEY (BeerID)
 );
 
 CREATE TABLE Brewery (
     BreweryID INT NOT NULL AUTO_INCREMENT,
-    Name      NVARCHAR,
-    Type      NVARCHAR,
-    Picture   NVARCHAR,
-    Location  NVARCHAR,
+    Name      NVARCHAR(60),
+    Type      NVARCHAR(40),
+    Picture   NVARCHAR(60),
+    Location  NVARCHAR(60),
     DateAdded DATE,
-    Details   NVARCHAR,
+    Details   NVARCHAR(60),
     PRIMARY KEY ( BreweryID )
 );
 
@@ -71,8 +71,8 @@ CREATE TABLE Pay (
 
 CREATE TABLE Person (
     PID     INT NOT NULL AUTO_INCREMENT,
-    Name    NVARCHAR,
-    Picture NVARCHAR,
+    Name    NVARCHAR(60),
+    Picture NVARCHAR(60),
     PRIMARY KEY ( PID )
 );
 
