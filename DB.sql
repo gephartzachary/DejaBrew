@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.3.3 on Thu Dec 1 16:33:15 2022
+-- File generated with SQLiteStudio v3.3.3 on Fri Dec 2 16:06:21 2022
 --
 -- Text encoding used: System
 --
@@ -10,12 +10,12 @@ BEGIN TRANSACTION;
 CREATE TABLE Bar (
     BarID     INTEGER PRIMARY KEY
                       DEFAULT ( -1),
-    Details,
-    DateAdded,
-    Name,
-    Rating,
-    Picture,
-    Location
+    Details   STRING,
+    DateAdded DATE,
+    Name      STRING,
+    Rating    DECIMAL,
+    Picture   STRING,
+    Location  STRING
 );
 
 
@@ -23,13 +23,13 @@ CREATE TABLE Bar (
 CREATE TABLE Beer (
     BeerID    INTEGER PRIMARY KEY
                       DEFAULT ( -1),
-    DateAdded,
-    Type,
-    Cost,
-    Comments,
-    Picture,
-    AlcVol,
-    Name
+    DateAdded DATE,
+    Type      STRING,
+    Cost      DOUBLE,
+    Comments  STRING,
+    Picture   STRING,
+    AlcVol    DOUBLE,
+    Name      STRING
 );
 
 
@@ -37,12 +37,12 @@ CREATE TABLE Beer (
 CREATE TABLE Brewery (
     BreweryID INTEGER PRIMARY KEY
                       DEFAULT ( -1),
-    Name,
-    Type,
-    Picture,
-    Location,
-    DateAdded,
-    Details
+    Name      STRING,
+    Type      STRING,
+    Picture   STRING,
+    Location  STRING,
+    DateAdded DATE,
+    Details   STRING
 );
 
 
@@ -50,8 +50,8 @@ CREATE TABLE Brewery (
 CREATE TABLE Brews (
     BrewID    INTEGER PRIMARY KEY
                       DEFAULT ( -1),
-    BreweryID         REFERENCES Brewery (BreweryID),
-    BeerID            REFERENCES Beer (BeerID) 
+    BreweryID INTEGER REFERENCES Brewery (BreweryID),
+    BeerID    INTEGER REFERENCES Beer (BeerID) 
 );
 
 
@@ -59,8 +59,8 @@ CREATE TABLE Brews (
 CREATE TABLE Buys (
     BuyID  INTEGER PRIMARY KEY
                    DEFAULT ( -1),
-    BeerID         REFERENCES Beer (BeerID),
-    BarID          REFERENCES Bar (BarID) 
+    BeerID INTEGER REFERENCES Beer (BeerID),
+    BarID  INTEGER REFERENCES Bar (BarID) 
 );
 
 
@@ -68,8 +68,8 @@ CREATE TABLE Buys (
 CREATE TABLE Claim (
     ClaimID INTEGER PRIMARY KEY
                     DEFAULT ( -1),
-    BarID           REFERENCES Bar (BarID),
-    TabID           REFERENCES Tab (TabID) 
+    BarID   INTEGER REFERENCES Bar (BarID),
+    TabID   INTEGER REFERENCES Tab (TabID) 
 );
 
 
@@ -77,8 +77,8 @@ CREATE TABLE Claim (
 CREATE TABLE Pay (
     PayID INTEGER PRIMARY KEY
                   DEFAULT ( -1),
-    TabID         REFERENCES Tab (TabID),
-    PID           REFERENCES Person (PID) 
+    TabID INTEGER REFERENCES Tab (TabID),
+    PID   INTEGER REFERENCES Person (PID) 
 );
 
 
@@ -86,8 +86,8 @@ CREATE TABLE Pay (
 CREATE TABLE Person (
     PID     INTEGER PRIMARY KEY
                     DEFAULT ( -1),
-    Name,
-    Picture
+    Name    STRING,
+    Picture STRING
 );
 
 
@@ -95,7 +95,7 @@ CREATE TABLE Person (
 CREATE TABLE Tab (
     TabID INTEGER PRIMARY KEY
                   DEFAULT ( -1),
-    Total
+    Total INTEGER
 );
 
 
@@ -103,10 +103,10 @@ CREATE TABLE Tab (
 CREATE TABLE TabList (
     ListID   INTEGER PRIMARY KEY
                      DEFAULT ( -1),
-    BeerID           REFERENCES Beer (BeerID),
-    TabID            REFERENCES Tab (TabID),
-    Quantity,
-    Rating
+    BeerID   INTEGER REFERENCES Beer (BeerID),
+    TabID    INTEGER REFERENCES Tab (TabID),
+    Quantity INTEGER,
+    Rating   DOUBLE
 );
 
 
