@@ -17,16 +17,16 @@ function connectDatabase() {
          * ELIJAHS SETUP:
          * {
          *      "host": "localhost",
-         *      "user": "",
-         *      "password": "",
+         *      "user": "elihelfen",
+         *      "password": "DejaBrew4U",
          *      "database": "dejabrew",
          *  }
          */
 
         db = mysql.createConnection({
             "host": "localhost",
-            "user": "zachgephart",
-            "password": "Zg-55255",
+            "user": "elihelfen",
+            "password": "DejaBrew4U",
             "database": "dejabrew",
         });
     }
