@@ -1,0 +1,22 @@
+INSERT INTO Person (Name,Picture)
+VALUES
+  ("Boris Chen","/picture"),
+  ("Jordan Carroll","/picture"),
+  ("Olivia Burgess","/picture"),
+  ("Alana Park","/picture"),
+  ("Margaret Mosley","/picture"),
+  ("Uma Meadows","/picture"),
+  ("Isadora Crawford","/picture"),
+  ("Quinn Pittman","/picture"),
+  ("Shay Puckett","/picture"),
+  ("Cole Mathis","/picture"),
+  ("Basil Hanson","/picture"),
+  ("Eve Thompson","/picture"),
+  ("Ciaran Coffey","/picture"),
+  ("Candace Sampson","/picture"),
+  ("Miranda Mathews","/picture"),
+  ("Yasir Benton","/picture"),
+  ("Kato Lawrence","/picture"),
+  ("Igor Sargent","/picture"),
+  ("Sage Wallace","/picture"),
+  ("Gloria Ochoa","/picture");
