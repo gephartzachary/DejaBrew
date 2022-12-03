@@ -4,4 +4,3 @@
     a. "CREATE USER 'YOUR_USERNAME'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PASSWORD_HERE';"
     b. "USE dejabrew;" <-- connects to the proper database
     c. "GRANT ALL PRIVILEGES ON "." TO 'YOUR_USERNAME'@'localhost';
-    d. "FLUSH PRIVILEGES";

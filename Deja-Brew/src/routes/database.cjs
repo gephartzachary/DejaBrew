@@ -34,14 +34,20 @@ function connectDatabase() {
     db.connect(function(err){
         if(!err) {
             console.log('Database is connected!');
+
+            console.log(db);
+
+            db.query("SELECT * FROM bar", function (err, result, fields) {
+                if (err) throw err;
+                console.log(result);
+                console.log(fields);
+            });
+
         } else {
-            console.log('Error connecting database!');
+            console.log('Database could not be connected! :(')
         }
     });
 
-    let query = db.query(`SHOW Tables`);
-
-    console.log(query);
 
     return db;
 }
