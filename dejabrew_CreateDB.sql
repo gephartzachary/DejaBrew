@@ -1,0 +1,96 @@
+CREATE DATABASE IF NOT EXISTS dejabrew;
+USE dejabrew;
+
+CREATE TABLE IF NOT EXISTS Bar (
+    BarID     INT NOT NULL AUTO_INCREMENT,
+    Details   NVARCHAR(60),
+    DateAdded DATE,
+    Name      NVARCHAR(60),
+    Rating    DECIMAL,
+    Picture   NVARCHAR(60),
+    Location  NVARCHAR(60),
+    PRIMARY KEY (BarID)
+);
+
+CREATE TABLE IF NOT EXISTS Beer (
+    BeerID    INT NOT NULL AUTO_INCREMENT ,
+    DateAdded DATE,
+    Type      NVARCHAR(40),
+    Cost      DOUBLE,
+    Comments  NVARCHAR(60),
+    Picture   NVARCHAR(60),
+    AlcVol    DOUBLE,
+    Name      NVARCHAR(60),
+    PRIMARY KEY (BeerID)
+);
+
+CREATE TABLE IF NOT EXISTS Brewery (
+    BreweryID INT NOT NULL AUTO_INCREMENT,
+    Name      NVARCHAR(60),
+    Type      NVARCHAR(40),
+    Picture   NVARCHAR(60),
+    Location  NVARCHAR(60),
+    DateAdded DATE,
+    Details   NVARCHAR(60),
+    PRIMARY KEY ( BreweryID )
+);
+
+CREATE TABLE IF NOT EXISTS Person (
+    PID     INT NOT NULL AUTO_INCREMENT,
+    Name    NVARCHAR(60),
+    Picture NVARCHAR(60),
+    PRIMARY KEY ( PID )
+);
+
+CREATE TABLE IF NOT EXISTS Tab (
+    TabID INT NOT NULL AUTO_INCREMENT,
+    Total INT,
+    PRIMARY KEY ( TabID )
+);
+
+CREATE TABLE IF NOT EXISTS Brews (
+    BrewID    INT NOT NULL AUTO_INCREMENT,
+    BreweryID INT,
+    FOREIGN KEY (BreweryID) REFERENCES Brewery (BreweryID),
+    BeerID    INT ,
+    FOREIGN KEY (BeerID) REFERENCES Beer (BeerID),
+    PRIMARY KEY ( BrewID )
+);
+
+CREATE TABLE IF NOT EXISTS Buys (
+    BuyID  INT NOT NULL AUTO_INCREMENT,
+    BeerID INT ,
+    FOREIGN KEY (BeerID) REFERENCES Beer (BeerID),
+    BarID  INT ,
+    FOREIGN KEY (BarID) REFERENCES Bar (BarID),
+    PRIMARY KEY ( BuyID )
+);
+
+CREATE TABLE IF NOT EXISTS Claim (
+    ClaimID INT NOT NULL AUTO_INCREMENT,
+    BarID   INT ,
+    FOREIGN KEY (BarID) REFERENCES Bar (BarID),
+    TabID   INT ,
+    FOREIGN KEY (TabID) REFERENCES Tab (TabID),
+    PRIMARY KEY ( ClaimID )
+);
+
+CREATE TABLE IF NOT EXISTS Pay (
+    PayID INT NOT NULL AUTO_INCREMENT,
+    TabID INT,
+    FOREIGN KEY (TabID) REFERENCES Tab (TabID),
+    PID   INT ,
+    FOREIGN KEY (PID) REFERENCES Person (PID),
+    PRIMARY KEY ( PayID )
+);
+
+CREATE TABLE IF NOT EXISTS TabList (
+    ListID   INT NOT NULL AUTO_INCREMENT,
+    BeerID   INT ,
+    FOREIGN KEY (BeerID) REFERENCES Beer (BeerID),
+    TabID    INT ,
+    FOREIGN KEY (TabID) REFERENCES Tab (TabID),
+    Quantity INT,
+    Rating   DOUBLE,
+    PRIMARY KEY ( ListID )
+);
