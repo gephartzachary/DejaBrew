@@ -4,7 +4,7 @@ USE dejabrew;
 DROP TABLE IF EXISTS Bar;
 CREATE TABLE Bar (
     BarID     INT NOT NULL AUTO_INCREMENT,
-    Details   NVARCHAR(60),
+    Details   NVARCHAR(100),
     DateAdded DATE,
     Name      NVARCHAR(60),
     Rating    DECIMAL,
@@ -19,7 +19,7 @@ CREATE TABLE Beer (
     DateAdded DATE,
     Type      NVARCHAR(40),
     Cost      DOUBLE,
-    Comments  NVARCHAR(60),
+    Comments  NVARCHAR(100),
     Picture   NVARCHAR(60),
     AlcVol    DOUBLE,
     Name      NVARCHAR(60),
@@ -34,7 +34,7 @@ CREATE TABLE Brewery (
     Picture   NVARCHAR(60),
     Location  NVARCHAR(60),
     DateAdded DATE,
-    Details   NVARCHAR(60),
+    Details   NVARCHAR(100),
     PRIMARY KEY ( BreweryID )
 );
 
