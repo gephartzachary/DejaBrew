@@ -1,3 +1,5 @@
+USE dejabrew;
+
 INSERT INTO Bar (Details,DateAdded,Name,Rating,Picture,Location)
 VALUES
   ("in consectetuer ipsum nunc id","09.30.22","piano opportunity malt",3,"/picture","South Burlington"),
