@@ -1,10 +1,16 @@
 CREATE DATABASE IF NOT EXISTS dejabrew;
 USE dejabrew;
 
+
+DROP TABLE IF EXISTS Tablist;
+DROP TABLE IF EXISTS Pay;
+DROP TABLE IF EXISTS Claim;
+DROP TABLE IF EXISTS Buys;
+DROP TABLE IF EXISTS Brews;
 DROP TABLE IF EXISTS Bar;
 CREATE TABLE Bar (
     BarID     INT NOT NULL AUTO_INCREMENT,
-    Details   NVARCHAR(60),
+    Details   NVARCHAR(100),
     DateAdded DATE,
     Name      NVARCHAR(60),
     Rating    DECIMAL,
@@ -19,7 +25,7 @@ CREATE TABLE Beer (
     DateAdded DATE,
     Type      NVARCHAR(40),
     Cost      DOUBLE,
-    Comments  NVARCHAR(60),
+    Comments  NVARCHAR(100),
     Picture   NVARCHAR(60),
     AlcVol    DOUBLE,
     Name      NVARCHAR(60),
@@ -34,7 +40,7 @@ CREATE TABLE Brewery (
     Picture   NVARCHAR(60),
     Location  NVARCHAR(60),
     DateAdded DATE,
-    Details   NVARCHAR(60),
+    Details   NVARCHAR(100),
     PRIMARY KEY ( BreweryID )
 );
 
@@ -53,7 +59,6 @@ CREATE TABLE Tab (
     PRIMARY KEY ( TabID )
 );
 
-DROP TABLE IF EXISTS Brews;
 CREATE TABLE Brews (
     BrewID    INT NOT NULL AUTO_INCREMENT,
     BreweryID INT,
@@ -63,7 +68,6 @@ CREATE TABLE Brews (
     PRIMARY KEY ( BrewID )
 );
 
-DROP TABLE IF EXISTS Buys;
 CREATE TABLE Buys (
     BuyID  INT NOT NULL AUTO_INCREMENT,
     BeerID INT ,
@@ -73,7 +77,6 @@ CREATE TABLE Buys (
     PRIMARY KEY ( BuyID )
 );
 
-DROP TABLE IF EXISTS Claim;
 CREATE TABLE Claim (
     ClaimID INT NOT NULL AUTO_INCREMENT,
     BarID   INT ,
@@ -83,7 +86,6 @@ CREATE TABLE Claim (
     PRIMARY KEY ( ClaimID )
 );
 
-DROP TABLE IF EXISTS Pay;
 CREATE TABLE Pay (
     PayID INT NOT NULL AUTO_INCREMENT,
     TabID INT,
@@ -93,7 +95,6 @@ CREATE TABLE Pay (
     PRIMARY KEY ( PayID )
 );
 
-DROP TABLE IF EXISTS Tablist;
 CREATE TABLE TabList (
     ListID   INT NOT NULL AUTO_INCREMENT,
     BeerID   INT ,

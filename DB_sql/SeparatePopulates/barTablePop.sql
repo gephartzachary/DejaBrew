@@ -1,0 +1,22 @@
+INSERT INTO Bar (Details,DateAdded,Name,Rating,Picture,Location)
+VALUES
+  ("in consectetuer ipsum nunc id","2022-09-12 13:33:29","piano opportunity malt",3,"/picture","South Burlington"),
+  ("gravida sit amet, dapibus id,","2022-12-11 23:17:52","green place",2,"/picture","Pocatello"),
+  ("faucibus. Morbi","2022-12-10 20:58:37","grey blue",3,"/picture","Tuscaloosa"),
+  ("Nullam vitae diam. Proin dolor. Nulla semper tellus id","2022-12-17 22:18:43","orange depth",2,"/picture","North Las Vegas"),
+  ("magna a","2022-09-24 22:33:32","ale combination owner",5,"/picture","Bozeman"),
+  ("orci tincidunt adipiscing.","2022-10-16 15:24:36","wealth strategy",2,"/picture","Kansas City"),
+  ("urna suscipit nonummy. Fusce fermentum","2022-12-23 01:57:00","opportunity malt",2,"/picture","Wilmington"),
+  ("bibendum sed, est. Nunc","2022-11-09 03:17:52","control piano opportunity",2,"/picture","Chattanooga"),
+  ("Vivamus nisi. Mauris nulla. Integer urna. Vivamus molestie dapibus","2022-09-14 19:24:27","law fortune",4,"/picture","Huntsville"),
+  ("malesuada malesuada. Integer id magna et","2022-09-25 22:18:24","combination owner",1,"/picture","Louisville"),
+  ("venenatis a, magna. Lorem ipsum dolor sit amet,","2022-09-06 06:18:52","grey blue",1,"/picture","Lansing"),
+  ("aliquet. Phasellus","2022-10-14 16:13:48","history dinner",5,"/picture","Duluth"),
+  ("a purus. Duis elementum, dui quis accumsan convallis,","2022-10-01 09:26:29","strategy bread",5,"/picture","San Antonio"),
+  ("vehicula aliquet libero. Integer in magna.","2022-11-05 06:44:56","red green",3,"/picture","Gulfport"),
+  ("risus. Donec egestas. Duis ac arcu. Nunc","2022-11-26 01:25:21","blue red",1,"/picture","Kearney"),
+  ("pede blandit congue. In scelerisque scelerisque dui. Suspendisse","2022-10-24 07:06:28","combination owner storage",3,"/picture","Aurora"),
+  ("posuere, enim nisl elementum purus, accumsan interdum libero","2022-11-21 12:44:46","place beers",2,"/picture","Tampa"),
+  ("purus mauris","11.18.22","bread idea",4,"/picture","Ketchikan"),
+  ("egestas. Aliquam fringilla cursus purus. Nullam scelerisque","2022-11-30 20:56:24","brewing company",3,"/picture","Erie"),
+  ("tristique ac, eleifend vitae, erat. Vivamus nisi. Mauris","2022-12-01 12:59:17","orange depth flight",0,"/picture","Newark");
