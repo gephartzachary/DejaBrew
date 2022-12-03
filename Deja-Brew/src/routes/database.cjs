@@ -4,6 +4,25 @@ let db;
 
 function connectDatabase() {
     if (db == null) {
+        
+        /* 
+         * ZACHS SETUP:
+         * {
+         *      "host": "localhost",
+         *      "user": "zachgephart",
+         *      "password": "Zg-55255",
+         *      "database": "dejabrew",
+         *  }
+         * 
+         * ELIJAHS SETUP:
+         * {
+         *      "host": "localhost",
+         *      "user": "",
+         *      "password": "",
+         *      "database": "dejabrew",
+         *  }
+         */
+
         db = mysql.createConnection({
             "host": "localhost",
             "user": "zachgephart",
