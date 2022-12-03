@@ -19,6 +19,12 @@ function connectDatabase() {
             console.log('Error connecting database!');
         }
     });
+
+    let query = db.query(`SHOW Tables`);
+
+    console.log(query);
+
+    return db;
 }
 
 module.exports = connectDatabase();
