@@ -1,0 +1,2 @@
+SELECT * FROM BEER
+WHERE Beer.AlcVol > 15
