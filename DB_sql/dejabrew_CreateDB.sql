@@ -13,7 +13,7 @@ CREATE TABLE Bar (
     Details   NVARCHAR(100),
     DateAdded DATE,
     Name      NVARCHAR(60),
-    Rating    DECIMAL,
+    Rating    DOUBLE,
     Picture   NVARCHAR(60),
     Location  NVARCHAR(60),
     PRIMARY KEY (BarID)
@@ -27,6 +27,7 @@ CREATE TABLE Beer (
     Cost      DOUBLE,
     Comments  NVARCHAR(100),
     Picture   NVARCHAR(60),
+    Rating   DOUBLE,
     AlcVol    DOUBLE,
     Name      NVARCHAR(60),
     PRIMARY KEY (BeerID)
@@ -40,6 +41,7 @@ CREATE TABLE Brewery (
     Picture   NVARCHAR(60),
     Location  NVARCHAR(60),
     DateAdded DATE,
+    Rating   DOUBLE,
     Details   NVARCHAR(100),
     PRIMARY KEY ( BreweryID )
 );
@@ -102,6 +104,5 @@ CREATE TABLE TabList (
     TabID    INT ,
     FOREIGN KEY (TabID) REFERENCES Tab (TabID),
     Quantity INT,
-    Rating   DOUBLE,
     PRIMARY KEY ( ListID )
 );
