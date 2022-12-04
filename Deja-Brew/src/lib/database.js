@@ -1,8 +1,7 @@
-let mysql = require('mysql');
+import {createConnection} from "mysql";
 
-let db;
-
-function connectDatabase() {
+export function connectDatabase() {
+    let db; 
     if (db == null) {
         
         /* 
@@ -23,33 +22,22 @@ function connectDatabase() {
          *  }
          */
 
-        db = mysql.createConnection({
+        db = createConnection({
             "host": "localhost",
             "user": "zachgephart",
             "password": "Zg-55255",
             "database": "dejabrew",
         });
     }
-
+    
     db.connect(function(err){
         if(!err) {
             console.log('Database is connected!');
-
-            console.log(db);
-
-            db.query("SELECT * FROM bar", function (err, result, fields) {
-                if (err) throw err;
-                console.log(result);
-                console.log(fields);
-            });
-
         } else {
-            console.log('Database could not be connected! :(')
+            console.log('Database could not be connected! :(');
+            throw(err);
         }
     });
 
-
     return db;
 }
-
-module.exports = connectDatabase();
