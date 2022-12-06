@@ -24,8 +24,8 @@ export function connectDatabase() {
 
         db = createConnection({
             "host": "localhost",
-            "user": "elihelfen",
-            "password": "DejaBrew4U",
+            "user": "zachgephart",
+            "password": "Zg-55255",
             "database": "dejabrew",
         });
     }
