@@ -1,16 +1,24 @@
 <script>
-    // import { query } from "../lib/queries.js"
+    import { connectDatabase } from "$lib/database";
 
-    // async function getQuery() {
-    //     let bars;
-    //     await query("SELECT * FROM bar", function(/** @type {any} */ result){
-    //         console.log(result);
-    //         bars = result;
-    //     });
-    //     console.log(bars);
-    // }    
+    let database = connectDatabase();
+
+    async function getData() {
+        // @ts-ignore
+        let results =  await database.query("SELECT * FROM bar", function (err, rows, fields) {
+            if (err) throw err;
+            console.log(fields);
+            return new Promise(rows);
+        });
+        console.log(results);
+    }
+
 </script>
 
-<div>Header</div>
-<slot/>
-<div>Footer</div>
+{#await getData}
+    <div>Loading.... Please God</div>
+{:then}
+    <div>Header</div>
+    <slot/>
+    <div>Footer</div>
+{/await}
