@@ -9,7 +9,7 @@ barRouter.use(flash());
 const db = require('./database.js');
 
 barRouter.get("/bars", function(req, res, nexrt) {
-    var selectBarSQL = 'SELECT * FROM bars';
+    var selectBarSQL = 'SELECT * FROM Bar';
 
     db.query(selectBarSQL, function(err, result, fields) {
         if (err) {throw err}
