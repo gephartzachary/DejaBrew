@@ -1,12 +1,36 @@
 
 <%- include('./partials/header.ejs') %>
+<section id="bill-page">
+    <div>
+        <header>
+            <h1>
+                Bills
+            </h1>
+        </header>
+        <div class="bill-ordering">
+            <div class="bill-buttons">
+                <a id="bill-add" href="/bill-new">
+                    Add
+                </a>
+            </div>
+        </div>
 
-<h1>
-    Bills
-</h1>
-
-<% billData.forEach(function(billData) { %>
-    <div><%= billData.Name %></div>
-<% }) %>
-
+        <div class="bill-items">
+            <%if(billData.length != 0) { %>
+                <% billData.forEach(function(billData) { %>
+                    <div>
+                        <div class="bill-title">
+                            <h2 class="bill-title-text">
+                                <div class="bill-title-and-buttons">
+                                    <div class="bill-full-title">
+                                        <%= billData.Name %>
+                                    </div>
+                                </div>
+                            </h2>
+                        </div>
+                    </div>
+                <% }) %>
+        </div>
+    </div>
+</section>
 <%- include('./partials/footer.ejs') %>

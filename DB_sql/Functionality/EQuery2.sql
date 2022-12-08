@@ -1,5 +1,10 @@
-Select TabID, sum(Quantity*Cost) AS Price
-FROM Tablist JOIN Beer
-ON TabList.BeerID = Beer.BeerID 
-GROUP BY TabID
---HAVING TabID = 'variable = TabID from Pay.PID = Person.PID Where PID is from specific Person'
+SELECT Person.Name as Name, Tab.DateAdded as Date, Tabs.Price as Price 
+FROM ( 
+	SELECT Tablist.TabID as TabID, sum(Quantity*Cost) AS Price
+	FROM Tablist JOIN Beer
+	ON TabList.BeerID = Beer.BeerID 
+	GROUP BY TabID 
+) as Tabs 
+JOIN Tab JOIN Pay JOIN Person
+ON Tabs.TabID = Tab.TabID AND Tabs.TabID = Pay.TabID AND Pay.PID = Person.PID
+ORDER BY Name ASC, Price DESC
