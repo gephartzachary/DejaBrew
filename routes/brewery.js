@@ -13,3 +13,9 @@ brewRouter.use(session({
 }));
 
 brewRouter.use(flash());
+
+brewRouter.get("/brewery", function(req, res) {
+    res.render("brewery");
+});
+
+module.exports = brewRouter;

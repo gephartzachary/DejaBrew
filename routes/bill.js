@@ -13,3 +13,9 @@ billRouter.use(session({
 }));
 
 billRouter.use(flash());
+
+billRouter.get("/bill", function(req, res) {
+    res.render("bill");
+});
+
+module.exports = billRouter;
