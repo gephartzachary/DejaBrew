@@ -7,4 +7,4 @@ FROM (
 ) as Tabs 
 JOIN Tab JOIN Pay JOIN Person
 ON Tabs.TabID = Tab.TabID AND Tabs.TabID = Pay.TabID AND Pay.PID = Person.PID
-ORDER BY Name ASC, Price DESC
+ORDER BY Name ASC, Date ASC, Price DESC
