@@ -1,4 +1,4 @@
-SELECT Person.Name as Name, Tab.DateAdded as Date, Tabs.Price as Price 
+SELECT Person.Name as Name, Tab.TabID as TabID, Tab.DateAdded as Date, Tabs.Price as Price 
 FROM ( 
 	SELECT Tablist.TabID as TabID, sum(Quantity*Cost) AS Price
 	FROM Tablist JOIN Beer

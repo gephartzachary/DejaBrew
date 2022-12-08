@@ -23,7 +23,15 @@
                             <h2 class="bill-title-text">
                                 <div class="bill-title-and-buttons">
                                     <div class="bill-full-title">
-                                        <%= billData.Name %>
+                                        <%= billData.Name %> <%= billData.Price %>
+                                    </div>
+                                    <div class="bill-edit-remove-buttons">
+                                        <a class="bill-edit-white bill-edit-remove" type="button" ><a class="department-edit-white department-edit-remove" type="button">
+
+                                        </a>
+                                        <a class="bill-edit-white bill-edit-remove bill-edit-pencil" href="/bill-edit/<%= billData.billID %>">
+                                            <i class="fa-solid fa-pencil"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </h2>
