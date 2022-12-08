@@ -1,4 +1,4 @@
-SELECT Brewery.Name as Name, (Ratings.rating/beers) as breweryRating
+SELECT *, (Ratings.rating/beers) as breweryRating
 FROM (
 	SELECT sum(Beer.Rating) as rating, count(Beer.BeerID) as beers, brews.BreweryID as BreweryID 
 	FROM Beer JOIN Brews 

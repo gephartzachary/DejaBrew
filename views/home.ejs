@@ -11,18 +11,21 @@
         <div id="home-tops">
             <ul class="home-top-5s">
                 <li>
-                    <% topBeers.forEach(function(topBeers) { %>
-                        <div><%= topBeers.Name %></div>
+                    <h3>Top Beers</h3>
+                    <% topBeers.forEach(function(topBeers, i) { %>
+                        <div><%= i+1 %> <%= topBeers.Name %></div>
                     <% }) %>
                 </li>
                 <li>
-                    <% topBars.forEach(function(topBars) { %>
-                        <div><%= topBars.Name %></div>
+                    <h3>Top Bars</h3>
+                    <% topBars.forEach(function(topBars, i) { %>
+                        <div><%= i+1 %> <%= topBars.Name %></div>
                     <% }) %>
                 </li>
                 <li>
-                    <% topBreweries.forEach(function(topBreweries) { %>
-                        <div><%= topBreweries.Name %></div>
+                    <h3>Top Breweries</h3>
+                    <% topBreweries.forEach(function(topBreweries, i) { %>
+                        <div><%= i+1 %> <%= topBreweries.Name %></div>
                     <% }) %>
                 </li>
             </ul>
