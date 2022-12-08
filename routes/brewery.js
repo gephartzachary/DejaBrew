@@ -14,8 +14,16 @@ brewRouter.use(session({
 
 brewRouter.use(flash());
 
-brewRouter.get("/brewery", function(req, res) {
-    res.render("brewery");
+brewRouter.get("/brewery", function(req, res, next) {
+    var selectBrewSQL = 'SELECT * FROM Brewery';
+
+    db.query(selectBrewSQL, function(err, result, fields) {
+        if (err) {throw err}
+        res.render("brewery", {
+            breweryData: result,
+            breweryChange: req.flash("breweryChange")
+        });
+    });
 });
 
 module.exports = brewRouter;

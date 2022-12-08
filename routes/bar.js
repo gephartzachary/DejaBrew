@@ -14,7 +14,7 @@ barRouter.use(session({
 
 barRouter.use(flash());
 
-barRouter.get("/bar", function(req, res, nexrt) {
+barRouter.get("/bar", function(req, res, next) {
     var selectBarSQL = 'SELECT * FROM Bar';
 
     db.query(selectBarSQL, function(err, result, fields) {

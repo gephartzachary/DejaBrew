@@ -55,7 +55,7 @@ CREATE TABLE Person (
 DROP TABLE IF EXISTS Tab;
 CREATE TABLE Tab (
     TabID INT NOT NULL AUTO_INCREMENT,
-    Date Added DATE,
+    DateAdded DATE,
     PRIMARY KEY ( TabID )
 );
 
