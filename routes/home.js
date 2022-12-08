@@ -26,7 +26,7 @@ homeRouter.get("/", function(req, res) {
         db.query(selectTopBarsSQL, function (err, tBars, fields) {
             if (err) {throw err}
 
-            db.query(selectTopBrewerysSQL, function (err, tBreweries, fields) {
+            db.query(selectTopBreweriesSQL, function (err, tBreweries, fields) {
                 if (err) {throw err}
 
                 res.render("home", {
