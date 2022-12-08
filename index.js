@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 const homeRoutes = require('./routes/home-about');
-const barRoutes = require('./routes/bars');
+const barRoutes = require('./routes/bar');
 
 app.use('/', homeRoutes);
 app.use('/', barRoutes);

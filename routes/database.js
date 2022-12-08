@@ -2,7 +2,7 @@ var mysql = require('mysql');
 
 var db;
 
-function createDatabase() {
+function connectDatabase() {
     if (!db) {
 
         /*
@@ -26,7 +26,10 @@ function createDatabase() {
             "database": "dejabrew"
         });
 
+        console.log("Database Connected");
+
         return db;
     }
-    module.exports = connectDatabase();
 }
+
+module.exports = connectDatabase();
