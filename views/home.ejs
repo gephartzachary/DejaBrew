@@ -5,9 +5,28 @@
 <section id="home-page">
     <div>
         <header>
-            <h1>Deja Brew</h1>
-            <h2>A place for you and your brews</h2>
+            <h1 class="home-text">Deja Brew</h1>
         </header>
+
+        <div id="home-tops">
+            <ul class="home-top-5s">
+                <li>
+                    <% topBeers.forEach(function(topBeers) { %>
+                        <div><%= topBeers.Name %></div>
+                    <% }) %>
+                </li>
+                <li>
+                    <% topBars.forEach(function(topBars) { %>
+                        <div><%= topBars.Name %></div>
+                    <% }) %>
+                </li>
+                <li>
+                    <% topBreweries.forEach(function(topBreweries) { %>
+                        <div><%= topBreweries.Name %></div>
+                    <% }) %>
+                </li>
+            </ul>
+        </div>
     </div>
 </section>
 

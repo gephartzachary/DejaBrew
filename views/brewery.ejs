@@ -3,3 +3,9 @@
 <h1>
     Breweries
 </h1>
+
+<% breweryData.forEach(function(breweryData) { %>
+    <div><%= breweryData.Name %></div>
+<% }) %>
+
+<%- include('./partials/footer.ejs') %>

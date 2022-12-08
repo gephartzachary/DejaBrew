@@ -1,5 +1,12 @@
 
 <%- include('./partials/header.ejs') %>
+
 <h1>
     Bills
 </h1>
+
+<% billData.forEach(function(billData) { %>
+    <div><%= billData.Name %></div>
+<% }) %>
+
+<%- include('./partials/footer.ejs') %>
