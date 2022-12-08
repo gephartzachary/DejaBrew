@@ -13,11 +13,17 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-const homeRoutes = require('./routes/home-about');
+const homeRoutes = require('./routes/home');
+const aboutRoutes = require('./routes/about');
 const barRoutes = require('./routes/bar');
+const billRoutes = require('./routes/bill');
+const brewRoutes = require('./routes/brewery');
 
 app.use('/', homeRoutes);
+app.use('/', aboutRoutes);
 app.use('/', barRoutes);
+app.use('/', billRoutes);
+app.use('/', brewRoutes);
 
 const port = 3000;
 app.listen(port, function() {

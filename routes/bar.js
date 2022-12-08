@@ -4,6 +4,8 @@ var barRouter = express.Router();
 const flash = require("connect-flash");
 const session = require('express-session');
 
+const db = require('./database.js');
+
 barRouter.use(session({
     secret: "Confidential information",
     resave: false,
@@ -11,8 +13,6 @@ barRouter.use(session({
 }));
 
 barRouter.use(flash());
-
-const db = require('./database.js');
 
 barRouter.get("/bar", function(req, res, nexrt) {
     var selectBarSQL = 'SELECT * FROM Bar';
