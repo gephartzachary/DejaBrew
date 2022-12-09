@@ -12,39 +12,45 @@
             <ul class="home-top-5s">
                 <li>
                     <h3>Top Beers</h3>
-                    <a id="first-arrow" class="buttons-container-one">
-                        last <span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"></i></span>
-                    </a>
-                    <% topBeers.forEach(function(topBeers, i) { %>
-                        <div><%= i+1 %> <%= topBeers.Name %></div>
-                    <% }) %>
-                    <a id="second-arrow" class="buttons-container-two">
-                        next <span class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-                    </a>
+                    <form action="/topOffset">
+                        <button type="submit" id="first-arrow" class="buttons-container-one">
+                            last <span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"><--</i></span>
+                        </button>
+                        <% topBeers.forEach(function(topBeers, i) { %>
+                            <div><%= i+1 %> <%= topBeers.Name %></div>
+                        <% }) %>
+                        <button type="submit" id="second-arrow" class="buttons-container-two">
+                            next <span class="arrow-icon"><i class="fa-solid fa-arrow-right-long">--></i></span>
+                        </button>
+                    </form>
                 </li>
                 <li>
                     <h3>Top Bars</h3>
-                    <a id="first-arrow" class="buttons-container-one">
-                        last <span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"></i></span>
-                    </a>
-                    <% topBars.forEach(function(topBars, i) { %>
-                        <div><%= i+1 %> <%= topBars.Name %></div>
-                    <% }) %>
-                    <a id="second-arrow" class="buttons-container-two">
-                        next <span class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-                    </a>
+                    <form action="/topOffset">
+                        <button type="submit" id="first-arrow" class="buttons-container-one">
+                            last <span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"><--</i></span>
+                        </button>
+                        <% topBars.forEach(function(topBars, i) { %>
+                            <div><%= i+1 %> <%= topBars.Name %></div>
+                        <% }) %>
+                        <button type="submit" id="second-arrow" class="buttons-container-two">
+                            next <span class="arrow-icon"><i class="fa-solid fa-arrow-right-long">--></i></span>
+                        </button>
+                    </form>
                 </li>
                 <li>
                     <h3>Top Breweries</h3>
-                    <a id="first-arrow" class="buttons-container-one">
-                        last <span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"></i></span>
-                    </a>
-                    <% topBreweries.forEach(function(topBreweries, i) { %>
-                        <div><%= i+1 %> <%= topBreweries.Name %></div>
-                    <% }) %>
-                    <a id="second-arrow" class="buttons-container-two">
-                        next <span class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-                    </a>
+                    <form action="/topOffset">
+                        <button type="submit" id="first-arrow" class="buttons-container-one">
+                            last <span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"><--</i></span>
+                        </button>
+                        <% topBreweries.forEach(function(topBreweries, i) { %>
+                            <div><%= i+1 %> <%= topBreweries.Name %></div>
+                        <% }) %>
+                        <button type="submit" id="second-arrow" class="buttons-container-two">
+                            next <span class="arrow-icon"><i class="fa-solid fa-arrow-right-long">--></i></span>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>
