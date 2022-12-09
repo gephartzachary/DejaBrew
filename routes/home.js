@@ -16,7 +16,7 @@ homeRouter.use(flash());
 
 homeRouter.get("/", function(req, res) {
 
-    let selectTopBeersSQL = "SELECT *,((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100) as Rating FROM Beer ORDER BY Rating DESC LIMIT 5";
+    let selectTopBeersSQL = "SELECT *,((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100) as Rating FROM Beer ORDER BY Rating DESC LIMIT 5";// make offset variable = 0 at start and then add or subtract 5 on button press
     let selectTopBarsSQL = "SELECT *, (Ratings.Rating/beers) as barRating "
         + "FROM ( "
             + "SELECT sum(((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100)) as Rating, count(Beer.BeerID) as beers, Buys.BarID as BarID " 
@@ -27,7 +27,7 @@ homeRouter.get("/", function(req, res) {
             + ") as Ratings "
         + "JOIN Bar ON Ratings.BarID = Bar.BarID "
         + "ORDER BY barRating DESC "
-        + "LIMIT 5";
+        + "LIMIT 5";// make offset variable = 0 at start and then add or subtract 5 on button press
     let selectTopBreweriesSQL = "SELECT *, (Ratings.Rating/beers) as breweryRating "
         + "FROM ( "
             + "SELECT sum(((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100)) as Rating, count(Beer.BeerID) as beers, brews.BreweryID as BreweryID "
@@ -39,7 +39,7 @@ homeRouter.get("/", function(req, res) {
         + "JOIN Brewery "
         + "ON Ratings.BreweryID = Brewery.BreweryID "
         + "ORDER BY breweryRating DESC "
-        + "LIMIT 5";
+        + "LIMIT 5";// make offset variable = 0 at start and then add or subtract 5 on button press
 
     db.query(selectTopBeersSQL, function(err, tBeers, fields) {
         if (err) {throw err}

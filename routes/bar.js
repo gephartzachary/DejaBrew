@@ -15,7 +15,7 @@ barRouter.use(session({
 barRouter.use(flash());
 
 barRouter.get("/bar", function(req, res, next) {
-    var selectBarSQL = 'SELECT * FROM Bar';
+    var selectBarSQL = 'SELECT * FROM Bar'; // Add new query on searches with Equery1 for beers on tap
 
     db.query(selectBarSQL, function(err, result, fields) {
         if (err) {throw err}
