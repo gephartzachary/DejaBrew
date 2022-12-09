@@ -2,13 +2,14 @@
 
 <link href="/dist/scripts/tailwind.css" rel="stylesheet">
 
+<div id="full-nav">
 <header id="navbar">
     <nav>
         <div class="navbar-container">
             <a class="nav-heading-text" href="/">
                 <b class="nav-heading">Deja Brew</b>
             </a>
-            <ul class="menu">
+            <ul class="menu" style="list-style-type: none;">
                 <li>
                     <a id="menu-bar" class="menu-link" href="/bar">Bars</a>
                 </li>
@@ -25,3 +26,98 @@
         </div>
     </nav>
 </header>
+</div>
+
+<style>
+
+    .navbar-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.full-nav {
+    background-color: #FED700; 
+}
+
+.nav-heading {
+    font-size: 30px !important;
+    display: inline-block;
+    margin-top: 3px;
+    margin-left: 3.5px;
+    color:black;
+}
+
+.nav-heading-text {
+    text-decoration: none;
+}
+
+.nav-heading:hover {
+    text-decoration: none;
+}
+
+@media all and (max-width: 650px) { 
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+    }
+}
+
+@media all and (min-width: 650px) { 
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        padding: 12px 32px;
+    }
+}
+
+.menu {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+    margin-right: 0;
+}
+
+@media all and (max-width: 650px) { 
+
+    .menu-link {
+        font-size: 22px;
+        font-weight: bold;
+        text-decoration: none;
+        position: relative;
+        margin-left: 15px;
+    }
+}
+
+@media all and (min-width: 650px) { 
+
+    .menu-link {
+        font-size: 22px;
+        font-weight: bold;
+        text-decoration: none;
+        position: relative;
+        margin-left: 30px;
+        color: black;
+    }
+}
+
+.menu-link:hover {
+    color: blue;
+}
+
+.menu-about {
+    margin-left: 0 !important;
+}
+</style>
