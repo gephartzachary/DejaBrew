@@ -3,23 +3,23 @@
 :root {
     --navbar-bg-color: rgb(255, 255, 255);
     --navbar-text-color: rgb(0, 0, 0); 
-    --navbar-text-color-hover: rgb(0,87,184);
+    --navbar-text-color-hover: rgb(184, 104, 0);
 
     --white-border: rgb(255, 255, 255);
     --black-border: rgb(0, 0, 0); 
-    --blue-border: rgb(0,87,184);
+    --orange-border: rgb(184, 104, 0);
     --gray-color: rgb(230,230,230);
     
     --white-background: rgb(255, 255, 255);
     --black-background: rgb(0, 0, 0); 
-    --blue-background: rgb(0,87,184);
+    --orange-background: rgb(184, 104, 0);
     
     --card-black: rgb(34, 33, 33);
     --card-white: white;
     
     --white-font: rgb(255, 255, 255);
     --black-font: rgb(0, 0, 0); 
-    --blue-font: rgb(0,87,184);
+    --orange-font: rgb(184, 104, 0);
 
     --edit-blue-color: rgb(133, 174, 221);
    

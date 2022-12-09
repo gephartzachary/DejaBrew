@@ -11,6 +11,9 @@
         <div class="searches">
             <form action="/brewery-search" method="POST">
                 <input type="text" id="brewName" name="brewName" placeholder="Search Name"><br><br>
+                <div class="statistic-input-column">
+                    <p class="BeersOnTap"><b>Beers on tap:</b> <input placeholder="0-10" type="number" class="" name="beerOnTap" size="5" maxlength="12" min="0" max="10" step="1"></p>
+                </div>
                 <button type="submit" class="brew-search-button">Search</button>
             </form>
         </div>
@@ -23,7 +26,7 @@
                             <h2 class="brewery-title-text">
                                 <div class="brewery-title-and-buttons">
                                     <div class="brewery-full-title">
-                                        <%= breweryData.Name %>
+                                        <%= breweryData.Name %> <%= breweryData.Type %>
                                     </div>
                                     <div style="padding-left:50px">
                                         Location: <%= breweryData.Location %>
