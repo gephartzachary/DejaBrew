@@ -14,10 +14,16 @@ brewRouter.use(session({
 
 brewRouter.use(flash());
 
-brewRouter.get("/brewery", function(req, res, next) {
-    var selectBrewSQL = 'SELECT * FROM Brewery';
+var nameSearch;
 
-    db.query(selectBrewSQL, function(err, result, fields) {
+brewRouter.get("/brewery", function(req, res, next) {
+    var selectBrewSQL = 'SELECT * FROM Brewery WHERE Name LIKE ?';
+
+    if (nameSearch == null) {
+        nameSearch = '%';
+    }
+
+    db.query(selectBrewSQL, [nameSearch], function(err, result, fields) {
         if (err) {throw err}
         res.render("brewery", {
             breweryData: result,
@@ -25,5 +31,12 @@ brewRouter.get("/brewery", function(req, res, next) {
         });
     });
 });
+
+brewRouter.post("/brewery-search", function(req, res) {
+    nameSearch = '%' + req.body.brewName + '%';
+
+    req.flash("breweryChange", "Brewery search name updated");
+    res.redirect("/brewery");
+})
 
 module.exports = brewRouter;

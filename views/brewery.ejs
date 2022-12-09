@@ -8,6 +8,13 @@
             </h1>
         </header>
 
+        <div class="searches">
+            <form action="/brewery-search" method="POST">
+                <input type="text" id="brewName" name="brewName" placeholder="Search Name"><br><br>
+                <button type="submit" class="brew-search-button">Search</button>
+            </form>
+        </div>
+
         <div class="brewery-items">
             <%if(breweryData.length != 0) { %>
                 <% breweryData.forEach(function(breweryData) { %>

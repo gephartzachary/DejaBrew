@@ -14,16 +14,29 @@ barRouter.use(session({
 
 barRouter.use(flash());
 
-barRouter.get("/bar", function(req, res, next) {
-    var selectBarSQL = 'SELECT * FROM Bar'; // Add new query on searches with Equery1 for beers on tap
+var nameSearch;
 
-    db.query(selectBarSQL, function(err, result, fields) {
+barRouter.get("/bar", function(req, res, next) {
+    var selectBarSQL = 'SELECT * FROM Bar WHERE Name LIKE ?'; // Add new query on searches with Equery1 for beers on tap
+
+    if (nameSearch == null) {
+        nameSearch = '%';
+    }
+
+    db.query(selectBarSQL, [nameSearch], function(err, result, fields) {
         if (err) {throw err}
         res.render("bar", {
             barData: result,
             barChange: req.flash("barChange")
         });
     });
+});
+
+barRouter.post("/bar-search", function(req, res) {
+    nameSearch = '%' + req.body.barName + '%';
+
+    req.flash("barChange", ("Bar search name updated"))
+    res.redirect('/bar');
 });
 
 module.exports = barRouter;
