@@ -43,7 +43,9 @@ billRouter.get("/bill", function(req, res, next) {
 });
 
 billRouter.post("/bill-search", function(req, res) {
-    nameSearch = '%' + req.body.personName + '%';
+    if (req.body.personName != ""){
+        nameSearch = '%' + req.body.personName + '%';
+    }
 
     req.flash("billChange", "Bill search name updated");
     res.redirect("/bill");

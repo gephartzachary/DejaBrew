@@ -37,7 +37,9 @@ beerRouter.get("/beer-new", function(req, res, next) {
 });
 
 beerRouter.post("/beer-search", function(req, res) {
-    nameSearch = '%' + req.body.beerName + '%';
+    if (req.body.beerName != ""){
+        nameSearch = '%' + req.body.beerName + '%';
+    }
 
     req.flash("beerChange", "Beer search name updated");
     res.redirect("/beer");
