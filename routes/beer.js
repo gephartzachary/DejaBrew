@@ -15,7 +15,7 @@ beerRouter.use(session({
 beerRouter.use(flash());
 
 beerRouter.get("/beer", function(req, res, next) {
-    var selectBarSQL = 'SELECT * FROM Beer';
+    var selectBarSQL = 'SELECT *, ((Likes/(Likes+Dislikes))*100) as Rating FROM Beer';
 
     db.query(selectBarSQL, function(err, result, fields) {
         if (err) {throw err}
