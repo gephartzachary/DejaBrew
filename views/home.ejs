@@ -1,6 +1,6 @@
 <%- include('./partials/header.ejs') %>
 
-<link rel=”stylesheet” href=”dist/scripts/tailwind.css”/>
+<link type="text/css" rel="stylesheet" href="/dist/scripts/home.css">
 
 <section id="home-page">
     <div>
@@ -16,18 +16,18 @@
                         <form action="/topBeerOffsetDown" method="POST">
                             <input type="hidden" name="BeersOffset" value="<%= BeerOffset %>">
                             <button type="submit" id="beer-first-arrow" class="buttons-container-one">
-                                <span><i></i></span>
+                                last<span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"></i></span>
                             </button>
                         </form>
                     <% } %>
                         <% topBeers.forEach(function(topBeers, i) { %>
-                            <div><%= i+1+BeerOffset %> <%= topBeers.Name %></div>
+                            <div><h4><%= i+1+BeerOffset %> <%= topBeers.Name %></h4></div>
                         <% }) %>
                     <% if(topBeers.length == 5) { %>
                         <form action="/topBeerOffsetUp" method="POST">
                             <input type="hidden" name="BeersOffset" value="<%= BeerOffset %>">
                             <button type="submit" id="beer-second-arrow" class="buttons-container-two">
-                                -->
+                                next<span class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></span>
                             </button>
                         </form>
                     <% } %>
@@ -36,20 +36,21 @@
                     <h3>Top Bars</h3>
                     <% if(BarOffset != 0) { %>
                         <form action="/topBarOffsetDown" method="POST">
-                            <input type="hidden" name="BarOffset" value="<%= BarOffset %>">                        <button type="submit" id="bar-first-arrow" class="buttons-container-one">
-                                <--
+                            <input type="hidden" name="BarOffset" value="<%= BarOffset %>">
+                            <button type="submit" id="bar-first-arrow" class="buttons-container-one">
+                                last<span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"></i></span>
                             </button>
 
                         </form>
                     <% } %>
                         <% topBars.forEach(function(topBars, i) { %>
-                            <div><%= i+1+BarOffset %> <%= topBars.Name %></div>
+                            <div><h4><%= i+1+BarOffset %> <%= topBars.Name %></h4></div>
                         <% }) %>
                     <% if(topBars.length == 5) { %>
                         <form action="/topBarOffsetUp" method="POST">
                             <input type="hidden" name="BarOffset" value="<%= BarOffset %>">
                             <button type="submit" id="bar-second-arrow" class="buttons-container-two">
-                                -->
+                                next<span class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></span>
                             </button>
                         </form>
                     <% } %>
@@ -60,18 +61,18 @@
                         <form action="/topBreweryOffsetDown" method="POST">
                             <input type="hidden" name="BreweriesOffset" value="<%= BreweryOffset %>">
                             <button type="submit" id="brew-first-arrow" class="buttons-container-one">
-                                <--
+                                last<span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"></i></span>
                             </button>
                         </form>
                     <% } %>
                         <% topBreweries.forEach(function(topBreweries, i) { %>
-                            <div><%= i+1+BreweryOffset %> <%= topBreweries.Name %></div>
+                            <div><h4><%= i+1+BreweryOffset %> <%= topBreweries.Name %></h4></div>
                         <% }) %>
                     <% if(topBreweries.length == 5) { %>
                         <form action="/topBreweryOffsetUp" method="POST">
                             <input type="hidden" name="BreweriesOffset" value="<%= BreweryOffset %>">
                             <button type="submit" id="brew-second-arrow" class="buttons-container-two">
-                                -->
+                                next<span class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></span>
                             </button>
                         </form>
                     <% } %>
