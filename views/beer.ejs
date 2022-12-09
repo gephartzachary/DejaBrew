@@ -36,18 +36,20 @@
                                         Name: <%= beerData.Name %> Rating: <%= beerData.Rating %>
                                     </div>
                                     <div class="beer-rating-buttons">
-                                        <form class="form-horizontal" action="/beer-like" method="POST">
-                                            <input id="like_<%= beerData.BeerID %>" type="hidden" class="beerclass" name="BeerID" value="<%= beerData.BeerID %>">
+                                        <form class="form-like-horizontal" action="/beer-like" method="POST">
+                                            <input id="like_<%= beerData.BeerID %>" type="hidden" class="beerLikes" name="LikeBeerID" value="<%= beerData.BeerID %>">
+                                            <input id="like_data_<%= beerData.BeerID %>" type="hidden" class="beerLikes" name="Likes" value="<%= beerData.Likes %>">
                                             <button type="submit" class="beer-like-button">Like</button>
                                         </form>
-                                        <form class="form-horizontal" action="/beer-dislike" method="POST">
-                                            <input id="dislike_<%= beerData.BeerID %>" type="hidden" class="beerclass" name="BeerID" value="<%= beerData.BeerID %>">
+                                        <form class="form-dislike-horizontal" action="/beer-dislike" method="POST">
+                                            <input id="dislike_<%= beerData.BeerID %>" type="hidden" class="beerDislikes" name="DislikeBeerID" value="<%= beerData.BeerID %>">
+                                            <input id="dislike_data_<%= beerData.BeerID %>" type="hidden" class="beerDislikes" name="Dislikes" value="<%= beerData.Dislikes %>">
                                             <button type="submit" class="beer-dislike-button">Disike</button>
                                         </form>
                                     </div>
                                     <div class="beer-delete-buttons">
                                         <form class="form-horizontal" action="/beer-remove" method="POST">
-                                            <input id="remove_<%= beerData.BeerID %>" type="hidden" class="beerclass" name="BeerID" value="<%= beerData.BeerID %>">
+                                            <input id="remove_<%= beerData.BeerID %>" type="hidden" class="beerclass" name="DeleteBeerID" value="<%= beerData.BeerID %>">
                                             <button type="submit" class="beer-delete-button">delete</button>
                                         </form>
                                     </div>

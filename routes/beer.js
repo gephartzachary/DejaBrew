@@ -27,8 +27,8 @@ beerRouter.get("/beer", function(req, res, next) {
 });
 
 beerRouter.post("/beer-like", function(req, res) {
-    var beerID = req.body.beerID;
-    var newLikes = req.body.Likes + 1;
+    var beerID = parseInt(req.body.LikeBeerID);
+    var newLikes = parseInt(req.body.Likes) + 1;
 
     var incremntBeerSQL = "UPDATE BEER SET Likes = ? WHERE BeerID = ? ";
 
@@ -41,10 +41,10 @@ beerRouter.post("/beer-like", function(req, res) {
 });
 
 beerRouter.post("/beer-dislike", function(req, res) {
-    var beerID = req.body.beerID;
-    var newDislikes = req.body.Dislikes + 1;
+    var beerID = parseInt(req.body.DislikeBeerID);
+    var newDislikes = parseInt(req.body.Dislikes) + 1;
 
-    var decremntBeerSQL = "UPDATE BEER SET Likes = ? WHERE BeerID = ? ";
+    var decremntBeerSQL = "UPDATE BEER SET Dislikes = ? WHERE BeerID = ? ";
 
     db.query(decremntBeerSQL, [newDislikes, beerID], function (err, result, fields) {
         if (err) {throw err}
@@ -56,11 +56,12 @@ beerRouter.post("/beer-dislike", function(req, res) {
 
 beerRouter.post("/beer-remove", function(req, res) {
 
-    var removeBeer = req.body.beerID;
+    var removeBeer = parseInt(req.body.DeleteBeerID);
 
-    var removeBuysJOIN = 'DELETE FROM Buys WHERE BeerID = ? ';
-    var removeBrewsJOIN = 'DELETE FROM Brews WHERE BeerID = ? ';
-    var removeBeerSQL = 'DELETE FROM Beer WHERE BeerID = ? ';
+    var removeBuysJOIN = "DELETE FROM Buys WHERE BeerID = ? ";
+    var removeBrewsJOIN = "DELETE FROM Brews WHERE BeerID = ? ";
+    var removeTabListJOIN = "DELETE FROM TabList WHERE BeerID = ?";
+    var removeBeerSQL = "DELETE FROM Beer WHERE BeerID = ?";
 
     db.query(removeBuysJOIN, [removeBeer], function (err, result, fields) {
         if (err) { throw err }
@@ -68,15 +69,38 @@ beerRouter.post("/beer-remove", function(req, res) {
         db.query(removeBrewsJOIN, [removeBeer], function(err, result, fields) {
             if (err) { throw err }
 
-            db.query(removeBeerSQL, [removeBeer], function (err, result, fields) {
-                if (err) { throw err}
-
-                req.flash("beerChanged", "Beer removed");
-                res.redirect("/beer");
+            db.query(removeTabListJOIN, [removeBeer], function(err, result, fields) {
+                db.query(removeBeerSQL, [removeBeer], function (err, result, fields) {
+                    if (err) { throw err}
+    
+                    req.flash("beerChanged", "Beer removed");
+                    res.redirect("/beer");
+                });
             });
         });
     });
 });
 
+
+beerRouter.post("beer-add", function(req, res) {
+    var beerName = req.body.Name;
+    var dateAdded = new Date();
+    var beerType = req.body.Type;
+    var beerCost = req.body.Cost;
+    var beerPic = "/picture";
+    var beerLikes = 1;
+    var beerDislikes = 1;
+    var beerAlcVol = req.body.AlcVol;
+
+    var beerAddQuery = "INSERT INTO Beer (Name, DateAdded, Type, Cost, Picture, Likes, Dislikes, AlcVol) "
+    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?) ";
+
+    db.query (beerAddQuery, [beerName, dateAdded, beerType, beerCost, beerPic, beerLikes, beerDislikes, beerAlcVol], function(err, result, field) {
+        if (err) { throw err }
+
+        req.flash("beerChanged", "Beer added");
+        res.redirect("/beer");
+    })
+})
 
 module.exports = beerRouter;
