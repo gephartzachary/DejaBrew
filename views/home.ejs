@@ -2,16 +2,12 @@
 
 <link type="text/css" rel="stylesheet" href="/dist/scripts/home.css">
 
-<section id="home-page">
+<section id="home-page" style="padding-top: 80px; padding-left: 40px">
     <div>
-        <header>
-            <h1 class="home-text">Deja Brew</h1>
-        </header>
-
         <div id="home-tops">
-            <ul class="home-top-5s">
+            <ul class="home-top-5s" style ="list-style-type: none;">
                 <li>
-                    <h3>Top Beers</h3>
+                    <h3 style="underline">Top Beers</h3>
                     <% if(BeerOffset != 0) { %>
                         <form action="/topBeerOffsetDown" method="POST">
                             <input type="hidden" name="BeersOffset" value="<%= BeerOffset %>">
@@ -33,27 +29,29 @@
                     <% } %>
                 </li>
                 <li>
-                    <h3>Top Bars</h3>
-                    <% if(BarOffset != 0) { %>
-                        <form action="/topBarOffsetDown" method="POST">
-                            <input type="hidden" name="BarOffset" value="<%= BarOffset %>">
-                            <button type="submit" id="bar-first-arrow" class="buttons-container-one">
-                                last<span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"></i></span>
-                            </button>
-
-                        </form>
-                    <% } %>
-                        <% topBars.forEach(function(topBars, i) { %>
-                            <div><h4><%= i+1+BarOffset %> <%= topBars.Name %></h4></div>
-                        <% }) %>
-                    <% if(topBars.length == 5) { %>
-                        <form action="/topBarOffsetUp" method="POST">
-                            <input type="hidden" name="BarOffset" value="<%= BarOffset %>">
-                            <button type="submit" id="bar-second-arrow" class="buttons-container-two">
-                                next<span class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-                            </button>
-                        </form>
-                    <% } %>
+                    <div style="flex-direction: row;">
+                        <h3>Top Bars</h3>
+                        <% if(BarOffset != 0) { %>
+                            <form action="/topBarOffsetDown" method="POST">
+                                <input type="hidden" name="BarOffset" value="<%= BarOffset %>">
+                                <button type="submit" id="bar-first-arrow" class="buttons-container-one">
+                                    last<span class="arrow-icon"><i class="fa-solid fa-arrow-left-long"></i></span>
+                                </button>
+    
+                            </form>
+                        <% } %>
+                        <% if(topBars.length == 5) { %>
+                            <form action="/topBarOffsetUp" method="POST">
+                                <input type="hidden" name="BarOffset" value="<%= BarOffset %>">
+                                <button type="submit" id="bar-second-arrow" class="buttons-container-two">
+                                    next<span class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></span>
+                                </button>
+                            </form>
+                        <% } %>
+                    </div>
+                    <% topBars.forEach(function(topBars, i) { %>
+                        <div><h4><%= i+1+BarOffset %> <%= topBars.Name %></h4></div>
+                    <% }) %>
                 </li>
                 <li>
                     <h3>Top Breweries</h3>
