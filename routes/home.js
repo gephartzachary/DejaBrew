@@ -14,9 +14,19 @@ homeRouter.use(session({
 
 homeRouter.use(flash());
 
+var topBeerOffset;
+var topBarOffset;
+var topBrewOffset;
+
 homeRouter.get("/", function(req, res) {
 
-    let selectTopBeersSQL = "SELECT *,((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100) as Rating FROM Beer ORDER BY Rating DESC LIMIT 5";// make offset variable = 0 at start and then add or subtract 5 on button press
+    if (topBeerOffset == null) {
+        topBeerOffset = 0;
+        topBarOffset = 0;
+        topBrewOffset = 0;
+    }
+
+    let selectTopBeersSQL = "SELECT *,((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100) as Rating FROM Beer ORDER BY Rating DESC LIMIT 5 OFFSET ?";// make offset variable = 0 at start and then add or subtract 5 on button press
     let selectTopBarsSQL = "SELECT *, (Ratings.Rating/beers) as barRating "
         + "FROM ( "
             + "SELECT sum(((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100)) as Rating, count(Beer.BeerID) as beers, Buys.BarID as BarID " 
@@ -27,7 +37,7 @@ homeRouter.get("/", function(req, res) {
             + ") as Ratings "
         + "JOIN Bar ON Ratings.BarID = Bar.BarID "
         + "ORDER BY barRating DESC "
-        + "LIMIT 5";// make offset variable = 0 at start and then add or subtract 5 on button press
+        + "LIMIT 5 OFFSET ?";// make offset variable = 0 at start and then add or subtract 5 on button press
     let selectTopBreweriesSQL = "SELECT *, (Ratings.Rating/beers) as breweryRating "
         + "FROM ( "
             + "SELECT sum(((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100)) as Rating, count(Beer.BeerID) as beers, brews.BreweryID as BreweryID "
@@ -39,21 +49,24 @@ homeRouter.get("/", function(req, res) {
         + "JOIN Brewery "
         + "ON Ratings.BreweryID = Brewery.BreweryID "
         + "ORDER BY breweryRating DESC "
-        + "LIMIT 5";// make offset variable = 0 at start and then add or subtract 5 on button press
+        + "LIMIT 5 OFFSET ?";// make offset variable = 0 at start and then add or subtract 5 on button press
 
-    db.query(selectTopBeersSQL, function(err, tBeers, fields) {
+    db.query(selectTopBeersSQL, [topBeerOffset], function(err, tBeers, fields) {
         if (err) {throw err}
 
-        db.query(selectTopBarsSQL, function (err, tBars, fields) {
+        db.query(selectTopBarsSQL, [topBarOffset], function (err, tBars, fields) {
             if (err) {throw err}
 
-            db.query(selectTopBreweriesSQL, function (err, tBreweries, fields) {
+            db.query(selectTopBreweriesSQL, [topBrewOffset], function (err, tBreweries, fields) {
                 if (err) {throw err}
 
                 res.render("home", {
                     topBeers: tBeers,
                     topBars: tBars,
                     topBreweries: tBreweries,
+                    BeerOffset: topBeerOffset,
+                    BarOffset: topBarOffset,
+                    BreweryOffset: topBrewOffset,
                     homeChange: req.flash("homeChange")
                 });
             })
@@ -61,4 +74,57 @@ homeRouter.get("/", function(req, res) {
     });
 });
 
+homeRouter.post("/topBeerOffsetDown", function(req, res) {
+    topBeerOffset = parseInt(req.body.BeersOffset) - 5;
+
+    if (topBeerOffset < 0) {
+        topBeerOffset += 5;
+    }
+
+    req.flash("homeChange", "Beer Offset decreased");
+    res.redirect("/");
+});
+
+homeRouter.post("/topBeerOffsetUp", function(req, res) {
+    topBeerOffset = parseInt(req.body.BeersOffset) + 5;
+
+    req.flash("homeChange", "Beer Offset increased");
+    res.redirect("/");
+});
+
+homeRouter.post("/topBarOffsetDown", function(req, res) {
+    topBarOffset = parseInt(req.body.BarOffset) - 5;
+
+    if (topBarOffset < 0) {
+        topBarOffset += 5;
+    }
+
+    req.flash("homeChange", "Bar Offset decreased");
+    res.redirect("/");
+});
+
+homeRouter.post("/topBarOffsetUp", function(req, res) {
+    topBarOffset = parseInt(req.body.BarOffset) + 5;
+
+    req.flash("homeChange", "Bar Offset increased");
+    res.redirect("/");
+});
+
+homeRouter.post("/topBreweryOffsetDown", function(req, res) {
+    topBrewOffset = parseInt(req.body.BreweriesOffset) - 5;
+
+    if (topBrewOffset < 0) {
+        topBrewOffset += 5;
+    }
+
+    req.flash("homeChange", "Brew Offset decreased");
+    res.redirect("/");
+});
+
+homeRouter.post("/topBreweryOffsetUp", function(req, res) {
+    topBrewOffset = parseInt(req.body.BreweriesOffset) + 5;
+
+    req.flash("homeChange", "Brew Offset increased");
+    res.redirect("/");
+});
 module.exports = homeRouter;

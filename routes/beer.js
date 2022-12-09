@@ -14,10 +14,16 @@ beerRouter.use(session({
 
 beerRouter.use(flash());
 
-beerRouter.get("/beer", function(req, res, next) {
-    var selectBarSQL = 'SELECT *, ((Likes/(Likes+Dislikes))*100) as Rating FROM Beer';
+var nameSearch;
 
-    db.query(selectBarSQL, function(err, result, fields) {
+beerRouter.get("/beer", function(req, res, next) {
+    var selectBarSQL = 'SELECT *, ((Likes/(Likes+Dislikes))*100) as Rating FROM Beer WHERE Name LIKE ?';
+
+    if (nameSearch == null) {
+        nameSearch = '%';
+    }
+
+    db.query(selectBarSQL, [nameSearch], function(err, result, fields) {
         if (err) {throw err}
         res.render("beer", {
             beerData: result,
@@ -28,6 +34,13 @@ beerRouter.get("/beer", function(req, res, next) {
 
 beerRouter.get("/beer-new", function(req, res, next) {
     res.render("beer-new");
+});
+
+beerRouter.post("/beer-search", function(req, res) {
+    nameSearch = '%' + req.body.beerName + '%';
+
+    req.flash("beerChange", "Beer search name updated");
+    res.redirect("/beer");
 });
 
 beerRouter.post("/beer-like", function(req, res) {
@@ -106,5 +119,7 @@ beerRouter.post("/beer-add", function(req, res) {
         res.redirect("/beer");
     });
 });
+
+
 
 module.exports = beerRouter;
