@@ -82,4 +82,25 @@ beerRouter.post("/beer-remove", function(req, res) {
 });
 
 
+beerRouter.post("beer-add", function(req, res) {
+    var beerName = req.body.Name;
+    var dateAdded = new Date();
+    var beerType = req.body.Type;
+    var beerCost = req.body.Cost;
+    var beerPic = "/picture";
+    var beerLikes = 1;
+    var beerDislikes = 1;
+    var beerAlcVol = req.body.AlcVol;
+
+    var beerAddQuery = "INSERT INTO Beer (Name, DateAdded, Type, Cost, Picture, Likes, Dislikes, AlcVol) "
+    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?) ";
+
+    db.query (beerAddQuery, [beerName, dateAdded, beerType, beerCost, beerPic, beerLikes, beerDislikes, beerAlcVol], function(err, result, field) {
+        if (err) { throw err }
+
+        req.flash("beerChanged", "Beer added");
+        res.redirect("/beer");
+    })
+})
+
 module.exports = beerRouter;
