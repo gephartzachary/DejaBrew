@@ -1,29 +1,29 @@
 var express = require('express');
-var billRouter = express.Router();
+var beerRouter = express.Router();
 
 const flash = require("connect-flash");
 const session = require('express-session');
 
 const db = require('./database.js');
 
-billRouter.use(session({
+beerRouter.use(session({
     secret: "Confidential information",
     resave: false,
     saveUninitialized: false
 }));
 
-billRouter.use(flash());
+beerRouter.use(flash());
 
-billRouter.get("/bill", function(req, res, next) {
-    var selectBarSQL = 'SELECT * FROM Bill';
+beerRouter.get("/beer", function(req, res, next) {
+    var selectBarSQL = 'SELECT * FROM Beer';
 
     db.query(selectBarSQL, function(err, result, fields) {
         if (err) {throw err}
-        res.render("bill", {
-            billData: result,
-            billChange: req.flash("billChange")
+        res.render("beer", {
+            beerData: result,
+            beerChange: req.flash("beerChange")
         });
     });
 });
 
-module.exports = billRouter;
+module.exports = beerRouter;
