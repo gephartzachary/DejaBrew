@@ -14,6 +14,19 @@
             </div>
         </div>
 
+        <div class="searches">
+            <form action="/action_page.php">
+                <label for="Name">Name:</label>
+                <input type="text" id="beerName" name="beerName"><br><br>
+                <input type="checkbox" id="rating-neg" name="rating-neg" value="Rating < 0">
+                <label for="rating-neg"> Rating less than 0</label><br>
+                <input type="checkbox" id="rating0-50" name="rating0-50" value="Rating > 0 AND Rating < 50">
+                <label for="rating0-50"> Rating between 0 and 50</label><br>
+                <input type="checkbox" id="rating50-100" name="rating50-100" value="Rating > 50">
+                <label for="rating50-100"> Rating greater than 50</label><br>
+            </form>
+        </div>
+
         <div class="beer-items">
             <%if(beerData.length != 0) { %>
                 <% beerData.forEach(function(beerData) { %>
@@ -22,10 +35,13 @@
                             <h2 class="beer-title-text">
                                 <div class="beer-title-and-buttons">
                                     <div class="beer-full-title">
-                                        <%= beerData.Name %> <%= beerData.Rating %>
+                                        Name: <%= beerData.Name %> Rating: <%= beerData.Rating %>
+                                    </div>
+                                    <div class="beer-rating-buttons">
+                                        <a class="beer-like"
                                     </div>
                                     <div class="beer-info-buttons">
-                                        <!--<a class="beer-info-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-beers<%= beerData.DepartmentID %>" aria-expanded="false" aria-controls="collapse-beer<%= beerData.TabID %>">
+                                        <!--<a class="beer-info-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-beers<%= beerData.BeerID %>" aria-expanded="false" aria-controls="collapse-beer<%= beerData.TabID %>">
                                             info
                                         </a>-->
                                     </div>
