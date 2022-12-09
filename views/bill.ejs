@@ -1,4 +1,4 @@
-
+<link type="text/css" rel="stylesheet" href="/dist/scripts/bill.css">
 <%- include('./partials/header.ejs') %>
 <section id="bill-page">
     <div>
@@ -11,7 +11,7 @@
         <div class="searches">
             <form action="/bill-search" method="POST">
                 <input type="text" id="beerName" name="personName" placeholder="Search Name"><br><br>
-                <button type="submit" class="bill-search-button">Search</button>
+                <button type="submit" class="bill-search-button"><i class="fa-solid fa-magnifying-glass">Search</i></button>
             </form>
         </div>
 
@@ -23,7 +23,7 @@
                             <h2 class="bill-title-text">
                                 <div class="bill-title-and-buttons">
                                     <div class="bill-full-title">
-                                        <%= billData.Name %> $<%= billData.Price %>.00 at <%= billData.BarName %>
+                                        <%= billData.Name %>        $<%= billData.Price %>.00 at <%= billData.BarName %>
                                     </div>
                                     <div class="bill-info">
                                         on <%= billData.Date %>

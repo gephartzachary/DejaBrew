@@ -7,4 +7,4 @@ FROM (
     ) as Ratings
 JOIN Brewery ON Ratings.BreweryID = Brewery.BreweryID
 ORDER BY breweryRating DESC 
-LIMIT 5 OFFSET 0
+LIMIT 5 OFFSET ?

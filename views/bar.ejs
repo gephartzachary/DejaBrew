@@ -1,3 +1,5 @@
+<link type="text/css" rel="stylesheet" href="/dist/scripts/bar.css">
+
 <%- include('./partials/header.ejs') %>
 <section id="bar-page">
     <div>
@@ -10,9 +12,9 @@
         <div class="searches">
             <form action="/bar-search" method="POST">
                 <input type="text" id="barName" name="barName" placeholder="Search Name"><br><br>
-                <!-- <div class="statistic-input-column">
-                    <p class="BeersOnTap"><b>Beers on tap:</b> <input placeholder="0-10" type="number" class="" name="beers-on-tap" size="5" maxlength="12" min="0" max="10" step="1"></p>
-                </div> -->
+                    <div class="statistic-input-column">
+                        <p class="BeersOnTap"><b>Beers on tap:</b> <input placeholder="0-10" type="number" class="" name="beers-on-tap" size="5" maxlength="12" min="0" max="10" step="1"></p>
+                    </div>
                 <button type="submit" class="bar-search-button">Search</button>
             </form>
         </div>
@@ -43,4 +45,5 @@
         </div>
     </div>
 </section>
+
 <%- include('./partials/footer.ejs') %>
