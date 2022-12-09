@@ -185,7 +185,7 @@ VALUES
 
 INSERT INTO Brewery (Name,Type,Picture,Location,DateAdded,Details)
 VALUES
-  ("tap the","taproom","/picture","Idaho Falls","2022-11-06 03:46:59","Donec tempor, est ac mattis semper, dui"),
+  ("tap that","taproom","/picture","Idaho Falls","2022-11-06 03:46:59","Donec tempor, est ac mattis semper, dui"),
   ("american special","regional","/picture","Honolulu","2022-11-27 07:36:15","Morbi neque tellus, imperdiet"),
   ("malt zebra amber","brewpub","/picture","West Valley City","2022-10-13 09:27:26","ullamcorper eu,"),
   ("brewers brewery tapper","brewpub","/picture","Atlanta","2022-12-02 10:44:55","Sed eu nibh vulputate"),
