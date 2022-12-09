@@ -6,4 +6,5 @@ FROM (
 	GROUP BY Buys.BarID
     ) as Ratings
 JOIN Bar ON Ratings.BarID = Bar.BarID
-Order by barRating desc
+ORDER BY barRating DESC 
+LIMIT 5 OFFSET 0
