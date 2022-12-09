@@ -191,8 +191,8 @@ VALUES
   ("brewers brewery tapper","brewpub","/picture","Atlanta","2022-12-02 10:44:55","Sed eu nibh vulputate"),
   ("malt zebra","micro","/picture","Meridian","2022-09-14 18:19:12","arcu. Sed et libero. Proin"),
   ("flanders new bar","micro","/picture","Gary","2022-12-17 12:59:50","non, dapibus rutrum, justo. Praesent luctus. Curabitur"),
-  ("flanders new","taproom","/picture","Gresham","2022-11-06 15:18:41","a, magna. Lorem ipsum dolor sit"),
-  ("flanders new","brewpub","/picture","Mobile","2022-10-01 03:33:03","dapibus quam quis diam."),
+  ("flanders tap","taproom","/picture","Gresham","2022-11-06 15:18:41","a, magna. Lorem ipsum dolor sit"),
+  ("flanders old","brewpub","/picture","Mobile","2022-10-01 03:33:03","dapibus quam quis diam."),
   ("new bar","brewpub","/picture","Chandler","2022-10-12 06:35:45","mi felis, adipiscing fringilla, porttitor vulputate, posuere"),
   ("brewing guiness tap","taproom","/picture","Montpelier","2022-10-31 16:41:06","ridiculus mus. Proin vel arcu eu odio tristique");
 
