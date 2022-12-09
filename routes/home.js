@@ -16,10 +16,10 @@ homeRouter.use(flash());
 
 homeRouter.get("/", function(req, res) {
 
-    let selectTopBeersSQL = "SELECT * FROM Beer ORDER BY Rating DESC LIMIT 5";
-    let selectTopBarsSQL = "SELECT *, (Ratings.rating/beers) as barRating "
+    let selectTopBeersSQL = "SELECT *,((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100) as Rating FROM Beer ORDER BY Rating DESC LIMIT 5";
+    let selectTopBarsSQL = "SELECT *, (Ratings.Rating/beers) as barRating "
         + "FROM ( "
-            + "SELECT sum(((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100)) as rating, count(Beer.BeerID) as beers, Buys.BarID as BarID " 
+            + "SELECT sum(((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100)) as Rating, count(Beer.BeerID) as beers, Buys.BarID as BarID " 
             + "FROM Beer "
             + "JOIN Buys "
             + "ON Beer.BeerID = Buys.BeerID "
@@ -28,9 +28,9 @@ homeRouter.get("/", function(req, res) {
         + "JOIN Bar ON Ratings.BarID = Bar.BarID "
         + "ORDER BY barRating DESC "
         + "LIMIT 5";
-    let selectTopBreweriesSQL = "SELECT *, (Ratings.rating/beers) as breweryRating "
+    let selectTopBreweriesSQL = "SELECT *, (Ratings.Rating/beers) as breweryRating "
         + "FROM ( "
-            + "SELECT sum(((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100)) as rating, count(Beer.BeerID) as beers, brews.BreweryID as BreweryID "
+            + "SELECT sum(((Beer.Likes/(Beer.Likes+Beer.Dislikes))*100)) as Rating, count(Beer.BeerID) as beers, brews.BreweryID as BreweryID "
             + "FROM Beer "
             + "JOIN Brews "
             + "ON Beer.BeerID = Brews.BeerID "
