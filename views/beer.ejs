@@ -34,16 +34,24 @@
                         <div class="beer-title">
                             <h2 class="beer-title-text">
                                 <div class="beer-title-and-buttons">
-                                    <div class="beer-full-title">
+                                    <div class="underline">
                                         Name: <%= beerData.Name %> Rating: <%= beerData.Rating %>
                                     </div>
                                     <div class="beer-rating-buttons">
-                                        <a class="beer-like"
+                                        <form class="form-horizontal" action="/beer-like" method="POST">
+                                            <input id="like_<%= beerData.BeerID %>" type="hidden" class="beerclass" name="BeerID" value="<%= beerData.BeerID %>">
+                                            <button type="submit" class="beer-like-button">Like</button>
+                                        </form>
+                                        <form class="form-horizontal" action="/beer-dislike" method="POST">
+                                            <input id="dislike_<%= beerData.BeerID %>" type="hidden" class="beerclass" name="BeerID" value="<%= beerData.BeerID %>">
+                                            <button type="submit" class="beer-dislike-button">Disike</button>
+                                        </form>
                                     </div>
-                                    <div class="beer-info-buttons">
-                                        <!--<a class="beer-info-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-beers<%= beerData.BeerID %>" aria-expanded="false" aria-controls="collapse-beer<%= beerData.TabID %>">
-                                            info
-                                        </a>-->
+                                    <div class="beer-delete-buttons">
+                                        <form class="form-horizontal" action="/beer-remove" method="POST">
+                                            <input id="remove_<%= beerData.BeerID %>" type="hidden" class="beerclass" name="BeerID" value="<%= beerData.BeerID %>">
+                                            <button type="submit" class="beer-delete-button">delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </h2>

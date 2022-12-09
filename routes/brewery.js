@@ -15,7 +15,7 @@ brewRouter.use(session({
 brewRouter.use(flash());
 
 brewRouter.get("/brewery", function(req, res, next) {
-    var selectBrewSQL = 'SELECT * FROM Brewery JOIN Brews JOIN Beer ON Brewery.BreweryID = Brews.BreweryID AND Brews.BeerID = Beer.BeerID ';
+    var selectBrewSQL = 'SELECT *, Beer.Name as BeerName, Brewery.Name as BreweryName FROM Brewery JOIN Brews JOIN Beer ON Brewery.BreweryID = Brews.BreweryID AND Brews.BeerID = Beer.BeerID ';
 
     db.query(selectBrewSQL, function(err, result, fields) {
         if (err) {throw err}

@@ -15,7 +15,7 @@ barRouter.use(session({
 barRouter.use(flash());
 
 barRouter.get("/bar", function(req, res, next) {
-    var selectBarSQL = 'SELECT * FROM Bar JOIN Buys JOIN Beer ON Bar.BarID = Buys.BarID AND Buys.BeerID = Beer.BeerID ';
+    var selectBarSQL = 'SELECT *, Beer.Name as BeerName, Bar.Name as BarName FROM Bar JOIN Buys JOIN Beer ON Bar.BarID = Buys.BarID AND Buys.BeerID = Beer.BeerID ';
 
     db.query(selectBarSQL, function(err, result, fields) {
         if (err) {throw err}
