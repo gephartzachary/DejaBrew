@@ -15,13 +15,17 @@
         </div>
 
         <div class="searches">
-            <form action="/action_page.php">
+            <form action="/beer-search" method="POST">
                 <label for="Name">Name:</label>
                 <input type="text" id="beerName" name="beerName"><br><br>
                 <input type="checkbox" id="rating0-50" name="rating0-50" value="Rating < 50">
                 <label for="rating0-50"> Rating less than 50</label><br>
                 <input type="checkbox" id="rating50-100" name="rating50-100" value="Rating > 50">
                 <label for="rating50-100"> Rating greater than 50</label><br>
+                <div class="statistic-input-column">
+                    <p class="BarPopularity"><b>Bar Popularity:</b> <input placeholder="0-10" type="number" class="" name="applypatientriskindex" size="5" maxlength="12" min="0" max="10" step="1"></p>
+                </div>
+                <button type="submit" class="beer-search-button">Search</button>
             </form>
         </div>
 

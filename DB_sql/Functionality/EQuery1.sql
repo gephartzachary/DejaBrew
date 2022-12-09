@@ -1,4 +1,4 @@
-SELECT Bar.name as Name, Bar.Location as Location FROM Bar
+SELECT Beer.name as Name, count(Bar.BarID) as Bars FROM Bar
 JOIN Buys JOIN Beer
 ON Bar.BarID = Buys.BarID AND Buys.BeerID = Beer.BeerID
---Where Beer.Name LIKE 'variable Beer.Name = selected Beer'
+GROUP BY Beer.BeerID
