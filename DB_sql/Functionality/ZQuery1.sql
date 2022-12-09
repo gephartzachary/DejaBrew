@@ -6,4 +6,5 @@ FROM (
 	GROUP BY brews.BreweryID
     ) as Ratings
 JOIN Brewery ON Ratings.BreweryID = Brewery.BreweryID
-Order by breweryRating desc
+ORDER BY breweryRating DESC 
+LIMIT 5 OFFSET 0
