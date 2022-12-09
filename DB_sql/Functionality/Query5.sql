@@ -7,4 +7,4 @@ FROM (
     ) as Ratings
 JOIN Bar ON Ratings.BarID = Bar.BarID
 ORDER BY barRating DESC 
-LIMIT 5 OFFSET 0
+LIMIT 5 OFFSET ?

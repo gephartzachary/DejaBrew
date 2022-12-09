@@ -1,5 +1,1 @@
-SELECT Bar.name as Name, count(Beer.BeerID) as Beers FROM Bar
-JOIN Buys JOIN Beer
-ON Bar.BarID = Buys.BarID AND Buys.BeerID = Beer.BeerID
-GROUP BY Bar.BarID
-HAVING Beers > ?
+SELECT *, ((Likes/(Likes+Dislikes))*100) as Rating FROM Beer WHERE Name LIKE ?
