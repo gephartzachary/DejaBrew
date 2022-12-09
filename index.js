@@ -18,12 +18,14 @@ const aboutRoutes = require('./routes/about');
 const barRoutes = require('./routes/bar');
 const billRoutes = require('./routes/bill');
 const brewRoutes = require('./routes/brewery');
+const beerRoutes = require('./routes/beer');
 
 app.use('/', homeRoutes);
 app.use('/', aboutRoutes);
 app.use('/', barRoutes);
 app.use('/', billRoutes);
 app.use('/', brewRoutes);
+app.use('/', beerRoutes);
 
 const port = 3000;
 app.listen(port, function() {

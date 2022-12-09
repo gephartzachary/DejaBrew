@@ -26,6 +26,7 @@ billRouter.get("/bill", function(req, res, next) {
     +"ON Tabs.TabID = Tab.TabID AND Tabs.TabID = Pay.TabID AND Pay.PID = Person.PID "
     +"ORDER BY Name ASC, Date ASC, Price DESC";
 
+
     db.query(selectBarSQL, function(err, result, fields) {
         if (err) {throw err}
         res.render("bill", {
