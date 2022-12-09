@@ -26,6 +26,10 @@ beerRouter.get("/beer", function(req, res, next) {
     });
 });
 
+beerRouter.get("/beer-new", function(req, res, next) {
+    res.render("beer-new");
+});
+
 beerRouter.post("/beer-like", function(req, res) {
     var beerID = parseInt(req.body.LikeBeerID);
     var newLikes = parseInt(req.body.Likes) + 1;
@@ -82,14 +86,14 @@ beerRouter.post("/beer-remove", function(req, res) {
 });
 
 
-beerRouter.post("beer-add", function(req, res) {
+beerRouter.post("/beer-add", function(req, res) {
     var beerName = req.body.Name;
     var dateAdded = new Date();
     var beerType = req.body.Type;
     var beerCost = req.body.Cost;
     var beerPic = "/picture";
     var beerLikes = 1;
-    var beerDislikes = 1;
+    var beerDislikes = 0;
     var beerAlcVol = req.body.AlcVol;
 
     var beerAddQuery = "INSERT INTO Beer (Name, DateAdded, Type, Cost, Picture, Likes, Dislikes, AlcVol) "
@@ -100,7 +104,7 @@ beerRouter.post("beer-add", function(req, res) {
 
         req.flash("beerChanged", "Beer added");
         res.redirect("/beer");
-    })
-})
+    });
+});
 
 module.exports = beerRouter;
