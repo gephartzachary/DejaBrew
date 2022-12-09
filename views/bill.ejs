@@ -25,19 +25,19 @@
                                     <div class="bill-full-title">
                                         <%= billData.Name %> <%= billData.Price %>
                                     </div>
-                                    <div class="bill-edit-remove-buttons">
-                                        <a class="bill-edit-white bill-edit-remove" type="button" ><a class="department-edit-white department-edit-remove" type="button">
-
-                                        </a>
-                                        <a class="bill-edit-white bill-edit-remove bill-edit-pencil" href="/bill-edit/<%= billData.billID %>">
-                                            <i class="fa-solid fa-pencil"></i>
-                                        </a>
+                                    <div class="bill-info-buttons">
+                                        <!--<a class="bill-info-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-bills<%= billData.DepartmentID %>" aria-expanded="false" aria-controls="collapse-bill<%= billData.TabID %>">
+                                            info
+                                        </a>-->
                                     </div>
                                 </div>
                             </h2>
                         </div>
                     </div>
                 <% }) %>
+            <% } else { %>
+                <h2 class="no-bill-data">There is currently no bill data.</h2>
+            <% } %>
         </div>
     </div>
 </section>

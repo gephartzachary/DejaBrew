@@ -1,11 +1,44 @@
 
 <%- include('./partials/header.ejs') %>
-<h1>
-    Breweries
-</h1>
+<section id="brewery-page">
+    <div>
+        <header>
+            <h1>
+                Breweries
+            </h1>
+        </header>
+        <div class="brewery-ordering">
+            <div class="brewery-buttons">
+                <a id="brewery-add" href="/brewery-new">
+                    Add
+                </a>
+            </div>
+        </div>
 
-<% breweryData.forEach(function(breweryData) { %>
-    <div><%= breweryData.Name %></div>
-<% }) %>
-
+        <div class="brewery-items">
+            <%if(breweryData.length != 0) { %>
+                <% breweryData.forEach(function(breweryData) { %>
+                    <div>
+                        <div class="brewery-title">
+                            <h2 class="brewery-title-text">
+                                <div class="brewery-title-and-buttons">
+                                    <div class="brewery-full-title">
+                                        <%= breweryData.Name %> <%= breweryData.Price %>
+                                    </div>
+                                    <div class="brewery-info-buttons">
+                                        <!--<a class="brewery-info-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-brewerys<%= breweryData.DepartmentID %>" aria-expanded="false" aria-controls="collapse-brewery<%= breweryData.TabID %>">
+                                            info
+                                        </a>-->
+                                    </div>
+                                </div>
+                            </h2>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h2 class="no-brewery-data">There is currently no brewery data.</h2>
+            <% } %>
+        </div>
+    </div>
+</section>
 <%- include('./partials/footer.ejs') %>

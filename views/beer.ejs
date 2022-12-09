@@ -1,0 +1,43 @@
+<%- include('./partials/header.ejs') %>
+<section id="beer-page">
+    <div>
+        <header>
+            <h1>
+                Beers
+            </h1>
+        </header>
+        <div class="beer-ordering">
+            <div class="beer-buttons">
+                <a id="beer-add" href="/beer-new">
+                    Add
+                </a>
+            </div>
+        </div>
+
+        <div class="beer-items">
+            <%if(beerData.length != 0) { %>
+                <% beerData.forEach(function(beerData) { %>
+                    <div>
+                        <div class="beer-title">
+                            <h2 class="beer-title-text">
+                                <div class="beer-title-and-buttons">
+                                    <div class="beer-full-title">
+                                        <%= beerData.Name %>
+                                    </div>
+                                    <div class="beer-info-buttons">
+                                        <!--<a class="beer-info-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-beers<%= beerData.DepartmentID %>" aria-expanded="false" aria-controls="collapse-beer<%= beerData.TabID %>">
+                                            info
+                                        </a>-->
+                                    </div>
+                                </div>
+                            </h2>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h2 class="no-beer-data">There is currently no beer data.</h2>
+            <% } %>
+        </div>
+    </div>
+</section>
+<%- include('./partials/footer.ejs') %>

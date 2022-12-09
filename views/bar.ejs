@@ -1,9 +1,43 @@
 <%- include('./partials/header.ejs') %>
-<h1>
-    Bars
-</h1>
-<% barData.forEach(function(barData) { %>
-    <div><%= barData.Name %></div>
-<% }) %>
+<section id="bar-page">
+    <div>
+        <header>
+            <h1>
+                Bars
+            </h1>
+        </header>
+        <div class="bar-ordering">
+            <div class="bar-buttons">
+                <a id="bar-add" href="/bar-new">
+                    Add
+                </a>
+            </div>
+        </div>
 
+        <div class="bar-items">
+            <%if(barData.length != 0) { %>
+                <% barData.forEach(function(barData) { %>
+                    <div>
+                        <div class="bar-title">
+                            <h2 class="bar-title-text">
+                                <div class="bar-title-and-buttons">
+                                    <div class="bar-full-title">
+                                        <%= barData.Name %> <%= barData.Price %>
+                                    </div>
+                                    <div class="bar-info-buttons">
+                                        <!--<a class="bar-info-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-bars<%= barData.DepartmentID %>" aria-expanded="false" aria-controls="collapse-bar<%= barData.TabID %>">
+                                            info
+                                        </a>-->
+                                    </div>
+                                </div>
+                            </h2>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h2 class="no-bar-data">There is currently no bar data.</h2>
+            <% } %>
+        </div>
+    </div>
+</section>
 <%- include('./partials/footer.ejs') %>
